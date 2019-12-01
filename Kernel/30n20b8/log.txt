@@ -1,0 +1,172 @@
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:42:50
+
+Read MPS format model from file ./instances/30n20b8.mps
+Reading time = 0.16 seconds
+30n20b8: 576 rows, 18380 columns, 109706 nonzeros
+Optimize a model with 576 rows, 18380 columns and 109706 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [5e+01, 1e+02]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 1e+00]
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 171 rows and 7284 columns
+Presolve time: 0.08s
+Presolved: 405 rows, 11096 columns, 60699 nonzeros
+
+
+Warning: Thread count (6) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Ordering time: 0.00s
+
+Barrier performed 0 iterations in 0.09 seconds
+Barrier solve interrupted - model solved by another algorithm
+
+
+Solved with dual simplex
+Solved in 431 iterations and 0.09 seconds
+Optimal objective  1.566407646e+00
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:42:50
+
+Read MPS format model from file ./instances/30n20b8.mps
+Reading time = 0.11 seconds
+30n20b8: 576 rows, 18380 columns, 109706 nonzeros
+Optimize a model with 18810 rows, 18380 columns and 127940 nonzeros
+Variable types: 0 continuous, 18380 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [5e+01, 1e+02]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 18470 rows and 18270 columns
+Presolve time: 0.02s
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:42:52
+
+Read MPS format model from file ./instances/30n20b8.mps
+Reading time = 0.12 seconds
+30n20b8: 576 rows, 18380 columns, 109706 nonzeros
+Optimize a model with 8782 rows, 18380 columns and 117912 nonzeros
+Variable types: 0 continuous, 18380 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [5e+01, 1e+02]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 8336 rows and 16709 columns
+Presolve time: 0.02s
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:42:53
+
+Read MPS format model from file ./instances/30n20b8.mps
+Reading time = 0.11 seconds
+30n20b8: 576 rows, 18380 columns, 109706 nonzeros
+Optimize a model with 10604 rows, 18380 columns and 119734 nonzeros
+Variable types: 0 continuous, 18380 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [5e+01, 1e+02]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 10414 rows and 16960 columns
+Presolve time: 0.41s
+Presolved: 190 rows, 1420 columns, 12598 nonzeros
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Variable types: 0 continuous, 1420 integer (1402 binary)
+Found heuristic solution: objective 553.0000000
+
+Explored 0 nodes (0 simplex iterations) in 0.44 seconds
+Thread count was 8 (of 4 available processors)
+
+Solution count 1: 553 
+
+Optimal solution found (tolerance 1.00e-12)
+Best objective 5.530000000000e+02, best bound 5.530000000000e+02, gap 0.0000%
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:42:55
+
+Read MPS format model from file ./instances/30n20b8.mps
+Reading time = 0.09 seconds
+30n20b8: 576 rows, 18380 columns, 109706 nonzeros
+Optimize a model with 8752 rows, 18380 columns and 117882 nonzeros
+Variable types: 0 continuous, 18380 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [5e+01, 1e+02]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 1e+00]
+
+Loaded MIP start with objective 553
+
+Presolve removed 8752 rows and 18380 columns
+Presolve time: 0.03s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: 553 
+
+Optimal solution found (tolerance 1.00e-12)
+Best objective 5.530000000000e+02, best bound 5.530000000000e+02, gap 0.0000%
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:42:56
+
+Read MPS format model from file ./instances/30n20b8.mps
+Reading time = 0.11 seconds
+30n20b8: 576 rows, 18380 columns, 109706 nonzeros
+Optimize a model with 10604 rows, 18380 columns and 119734 nonzeros
+Variable types: 0 continuous, 18380 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [5e+01, 1e+02]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 1e+00]
+
+Loaded MIP start with objective 553
+
+Presolve removed 10414 rows and 16970 columns
+Presolve time: 0.42s
+Presolved: 190 rows, 1410 columns, 12562 nonzeros
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Variable types: 0 continuous, 1410 integer (1392 binary)
+
+Explored 0 nodes (0 simplex iterations) in 0.42 seconds
+Thread count was 8 (of 4 available processors)
+
+Solution count 1: 553 
+
+Optimal solution found (tolerance 1.00e-12)
+Best objective 5.530000000000e+02, best bound 5.530000000000e+02, gap 0.0000%

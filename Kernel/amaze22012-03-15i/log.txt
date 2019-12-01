@@ -1,0 +1,373 @@
+
+Gurobi 8.1.1 (win64) logging started 11/29/19 15:36:31
+
+Read MPS format model from file ./instances/in.mps
+Reading time = 7.17 seconds
+in: 1526202 rows, 1449074 columns, 6811639 nonzeros
+Optimize a model with 1526202 rows, 1449074 columns and 6811639 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 20378 rows and 3819 columns (presolve time = 5s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 10s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 15s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 20s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 25s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 30s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 35s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 40s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 45s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 50s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 55s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 60s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 65s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 70s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 75s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 80s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 85s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 90s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 95s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 100s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 105s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 110s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 115s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 120s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 125s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 130s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 135s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 140s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 145s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 150s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 155s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 160s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 165s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 170s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 175s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 180s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 185s) ...
+Presolve removed 20378 rows and 3819 columns (presolve time = 190s) ...
+
+Gurobi 8.1.1 (win64) logging started 11/29/19 15:40:07
+
+Read MPS format model from file ./instances/in.mps
+Reading time = 21.96 seconds
+in: 1526202 rows, 1449074 columns, 6811639 nonzeros
+Optimize a model with 1526202 rows, 1449074 columns and 6811639 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 20378 rows and 3819 columns (presolve time = 8s) ...
+Presolve removed 30722 rows and 9574 columns (presolve time = 10s) ...
+Presolve removed 30722 rows and 9574 columns
+Presolve time: 11.33s
+Presolved: 1495480 rows, 1439500 columns, 6696161 nonzeros
+
+
+Gurobi 8.1.1 (win64) logging started 11/29/19 15:47:04
+
+Read MPS format model from file ./instances/woodlands09.mps
+Reading time = 3.17 seconds
+woodlands09: 194599 rows, 382147 columns, 2646003 nonzeros
+Optimize a model with 194599 rows, 382147 columns and 2646003 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 8e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+01]
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 159232 rows and 156775 columns
+Presolve time: 3.74s
+Presolved: 35367 rows, 225372 columns, 1996929 nonzeros
+
+
+Warning: Thread count (6) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ AA' NZ     : 2.025e+06
+ Factor NZ  : 1.000e+07 (roughly 200 MBytes of memory)
+ Factor Ops : 1.292e+10 (less than 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   4.78381797e+04 -6.81074184e+04  2.80e+03 3.45e+00  3.19e+01    13s
+   1   4.74171068e+03 -1.11807432e+05  2.97e+02 1.54e-13  3.55e+00    14s
+   2   8.79439908e+02 -6.88854506e+04  5.34e+01 2.14e-13  7.17e-01    15s
+   3   1.83435373e+02 -2.86943897e+04  9.64e+00 1.51e-13  1.57e-01    15s
+   4   3.51240871e+01 -1.13099261e+04  6.63e-01 1.99e-13  2.98e-02    16s
+   5   2.30279556e+01 -4.98111589e+03  1.04e-02 1.99e-13  1.08e-02    17s
+   6   1.87273716e+01 -1.65439523e+03  1.20e-03 4.31e-13  3.60e-03    18s
+   7   1.10248883e+01 -9.34767998e+02  3.65e-04 8.74e-13  2.04e-03    19s
+   8   2.19375705e+00 -4.50123608e+02  1.02e-05 2.04e-12  9.73e-04    20s
+   9   8.33894055e-01 -1.38052326e+01  3.52e-06 1.04e-11  3.15e-05    21s
+  10   6.69192774e-03 -1.02490139e-01  2.44e-08 1.38e-11  2.35e-07    22s
+  11   7.93320377e-09 -4.76216378e-07  6.29e-13 1.48e-11  1.04e-12    22s
+  12   7.93334942e-12 -2.21097402e-09  9.73e-13 1.34e-11  4.92e-15    23s
+
+Barrier solved model in 12 iterations and 23.34 seconds
+Optimal objective 7.93334942e-12
+
+Crossover log...
+
+   15818 DPushes remaining with DInf 0.0000000e+00                24s
+      95 DPushes remaining with DInf 0.0000000e+00                26s
+       0 DPushes remaining with DInf 0.0000000e+00                26s
+
+  197048 PPushes remaining with PInf 0.0000000e+00                26s
+  186451 PPushes remaining with PInf 0.0000000e+00                30s
+  179444 PPushes remaining with PInf 0.0000000e+00                35s
+  172484 PPushes remaining with PInf 0.0000000e+00                40s
+  167728 PPushes remaining with PInf 0.0000000e+00                45s
+  159041 PPushes remaining with PInf 0.0000000e+00                50s
+  150431 PPushes remaining with PInf 0.0000000e+00                55s
+  143341 PPushes remaining with PInf 0.0000000e+00                60s
+  137253 PPushes remaining with PInf 0.0000000e+00                65s
+  131937 PPushes remaining with PInf 0.0000000e+00                70s
+  127573 PPushes remaining with PInf 0.0000000e+00                75s
+  124373 PPushes remaining with PInf 0.0000000e+00                80s
+  121018 PPushes remaining with PInf 0.0000000e+00                85s
+  118604 PPushes remaining with PInf 0.0000000e+00                90s
+  116071 PPushes remaining with PInf 0.0000000e+00                96s
+Warning: 1 variables dropped from basis
+
+Restart crossover...
+
+
+   15818 DPushes remaining with DInf 0.0000000e+00                98s
+     451 DPushes remaining with DInf 0.0000000e+00               101s
+       0 DPushes remaining with DInf 0.0000000e+00               102s
+
+  197048 PPushes remaining with PInf 0.0000000e+00               102s
+  188959 PPushes remaining with PInf 0.0000000e+00               105s
+  180070 PPushes remaining with PInf 0.0000000e+00               110s
+  174339 PPushes remaining with PInf 0.0000000e+00               115s
+  170253 PPushes remaining with PInf 0.0000000e+00               120s
+  167222 PPushes remaining with PInf 0.0000000e+00               125s
+  162227 PPushes remaining with PInf 0.0000000e+00               130s
+  156853 PPushes remaining with PInf 0.0000000e+00               135s
+  151999 PPushes remaining with PInf 0.0000000e+00               140s
+  147314 PPushes remaining with PInf 0.0000000e+00               145s
+Warning: 1 variables dropped from basis
+  143393 PPushes remaining with PInf 0.0000000e+00               150s
+Warning: 1 variables dropped from basis
+  139882 PPushes remaining with PInf 0.0000000e+00               155s
+  136200 PPushes remaining with PInf 0.0000000e+00               160s
+  132977 PPushes remaining with PInf 0.0000000e+00               165s
+  129829 PPushes remaining with PInf 0.0000000e+00               170s
+
+Gurobi 8.1.1 (win64) logging started 11/29/19 15:50:10
+
+Read MPS format model from file ./instances/woodlands09.mps
+Reading time = 3.14 seconds
+woodlands09: 194599 rows, 382147 columns, 2646003 nonzeros
+Optimize a model with 194599 rows, 382147 columns and 2646003 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 8e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+01]
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 157016 rows and 155113 columns
+Presolve time: 2.81s
+Presolved: 37583 rows, 227034 columns, 2240550 nonzeros
+
+
+Warning: Thread count (6) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ AA' NZ     : 2.957e+06
+ Factor NZ  : 1.217e+07 (roughly 200 MBytes of memory)
+ Factor Ops : 1.512e+10 (roughly 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   3.85134045e+04 -8.48826348e+04  2.25e+03 3.45e+00  2.63e+01    13s
+   1   3.11549022e+03 -1.23979389e+05  1.99e+02 2.97e-13  2.51e+00    14s
+   2   3.41152768e+02 -4.24853986e+04  1.99e+01 1.15e-12  2.94e-01    15s
+   3   1.24722868e+02 -1.77553623e+04  6.33e+00 7.78e-13  9.65e-02    16s
+   4   2.77341943e+01 -5.50127965e+03  2.64e-01 8.79e-13  1.34e-02    17s
+   5   2.08979160e+01 -3.94571444e+03  6.44e-03 8.07e-13  8.50e-03    18s
+   6   1.64240865e+01 -1.16702177e+03  1.39e-03 9.09e-13  2.53e-03    19s
+   7   7.53631862e+00 -5.76132042e+02  3.45e-04 1.44e-12  1.25e-03    20s
+   8   2.08674482e+00 -1.29712361e+02  6.26e-05 1.18e-11  2.82e-04    21s
+   9   8.03275921e-02 -3.40988625e+00  1.06e-06 6.84e-12  7.46e-06    22s
+  10   3.41119597e-04 -3.44012960e-03  4.05e-09 7.85e-12  8.08e-09    23s
+  11   3.41127090e-07 -3.44058928e-06  2.95e-10 1.04e-11  8.08e-12    24s
+  12   3.41127089e-10 -3.22033735e-09  2.42e-12 8.13e-12  8.08e-15    25s
+
+Barrier solved model in 12 iterations and 25.00 seconds
+Optimal objective 3.41127089e-10
+
+Crossover log...
+
+   16560 DPushes remaining with DInf 0.0000000e+00                25s
+       0 DPushes remaining with DInf 6.7733232e+05                27s
+
+  197048 PPushes remaining with PInf 0.0000000e+00                27s
+  188905 PPushes remaining with PInf 0.0000000e+00                30s
+  179480 PPushes remaining with PInf 0.0000000e+00                35s
+  174264 PPushes remaining with PInf 0.0000000e+00                40s
+  169690 PPushes remaining with PInf 0.0000000e+00                45s
+  165918 PPushes remaining with PInf 0.0000000e+00                50s
+  155691 PPushes remaining with PInf 0.0000000e+00                55s
+  147494 PPushes remaining with PInf 0.0000000e+00                60s
+  140931 PPushes remaining with PInf 0.0000000e+00                65s
+Warning: 3 variables dropped from basis
+
+Restart crossover...
+
+   97185 variables added to crossover basis                       70s
+
+   16560 DPushes remaining with DInf 0.0000000e+00                71s
+     930 DPushes remaining with DInf 0.0000000e+00                76s
+       0 DPushes remaining with DInf 6.8079977e+05                77s
+
+  197048 PPushes remaining with PInf 0.0000000e+00                78s
+  191624 PPushes remaining with PInf 0.0000000e+00                80s
+  182828 PPushes remaining with PInf 0.0000000e+00                85s
+  176414 PPushes remaining with PInf 0.0000000e+00                90s
+  172178 PPushes remaining with PInf 0.0000000e+00                95s
+  169532 PPushes remaining with PInf 0.0000000e+00               100s
+  166905 PPushes remaining with PInf 0.0000000e+00               105s
+  164641 PPushes remaining with PInf 0.0000000e+00               110s
+  160101 PPushes remaining with PInf 0.0000000e+00               115s
+  154281 PPushes remaining with PInf 0.0000000e+00               120s
+  148660 PPushes remaining with PInf 0.0000000e+00               125s
+  144769 PPushes remaining with PInf 0.0000000e+00               130s
+Warning: 6 variables dropped from basis
+  140660 PPushes remaining with PInf 2.2409276e+02               135s
+  136341 PPushes remaining with PInf 1.6387185e+02               140s
+  132836 PPushes remaining with PInf 1.3280701e+02               145s
+  129239 PPushes remaining with PInf 1.0846914e+02               150s
+  125795 PPushes remaining with PInf 9.0015666e+01               155s
+  122433 PPushes remaining with PInf 7.6680039e+01               160s
+
+Gurobi 8.1.1 (win64) logging started 11/29/19 15:53:26
+
+Read MPS format model from file ./instances/amaze22012-03-15i.mps
+Reading time = 0.27 seconds
+amaze22012-03-15i: 5189 rows, 33458 columns, 70670 nonzeros
+Optimize a model with 5189 rows, 33458 columns and 70670 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 2e+02]
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 5187 rows and 33278 columns
+Presolve time: 0.04s
+Presolved: 2 rows, 180 columns, 360 nonzeros
+
+
+Warning: Thread count (6) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ AA' NZ     : 1.000e+00
+ Factor NZ  : 3.000e+00
+ Factor Ops : 5.000e+00 (less than 1 second per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   0.00000000e+00  0.00000000e+00  3.09e+02 0.00e+00  5.91e-02     0s
+   1   0.00000000e+00 -6.32714351e-01  7.75e+01 2.78e-17  1.54e-02     0s
+   2   0.00000000e+00 -4.17641192e-01  9.08e+00 2.78e-17  2.42e-03     0s
+   3   0.00000000e+00 -5.66196301e-04  2.96e+00 8.33e-17  4.17e-04     0s
+   4   0.00000000e+00 -6.33147377e-02  2.28e-01 4.16e-17  1.96e-04     0s
+   5   0.00000000e+00 -8.30915163e-05  6.96e-02 1.11e-16  1.73e-05     0s
+   6   0.00000000e+00 -4.22550986e-05  5.34e-05 6.94e-18  1.30e-07     0s
+   7   0.00000000e+00 -1.03342501e-10  4.42e-09 5.55e-17  1.38e-12     0s
+
+Barrier solved model in 7 iterations and 0.04 seconds
+Optimal objective 0.00000000e+00
+
+Crossover log...
+
+       1 DPushes remaining with DInf 0.0000000e+00                 0s
+
+       1 PPushes remaining with PInf 0.0000000e+00                 0s
+       0 PPushes remaining with PInf 0.0000000e+00                 0s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      0s
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       4    0.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved with primal simplex
+Solved in 11 iterations and 0.07 seconds
+Optimal objective  0.000000000e+00
+
+Gurobi 8.1.1 (win64) logging started 11/29/19 15:53:27
+
+Read MPS format model from file ./instances/amaze22012-03-15i.mps
+Reading time = 0.19 seconds
+amaze22012-03-15i: 5189 rows, 33458 columns, 70670 nonzeros
+Optimize a model with 36574 rows, 33458 columns and 102055 nonzeros
+Model has 31210 general constraints
+Variable types: 345 continuous, 33113 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 2e+02]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 0 rows and 48 columns
+Presolve time: 0.00s
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -

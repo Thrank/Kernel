@@ -1,0 +1,313 @@
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:45:05
+
+Read MPS format model from file ./instances/eil33-2.mps
+Reading time = 0.08 seconds
+eil33-2: 32 rows, 4516 columns, 44243 nonzeros
+Optimize a model with 32 rows, 4516 columns and 44243 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e+01, 4e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve time: 0.03s
+Presolved: 32 rows, 4516 columns, 44243 nonzeros
+
+
+Warning: Thread count (6) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ AA' NZ     : 4.960e+02
+ Factor NZ  : 5.280e+02 (roughly 2 MBytes of memory)
+ Factor Ops : 1.144e+04 (less than 1 second per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   1.22729645e+05  0.00000000e+00  2.57e+02 0.00e+00  1.42e+01     0s
+   1   3.37094382e+03 -1.60699429e+01  4.96e+00 1.14e-13  3.82e-01     0s
+   2   1.10247613e+03  4.12833278e+02  3.19e-01 1.14e-13  7.41e-02     0s
+
+Barrier performed 2 iterations in 0.06 seconds
+Barrier solve interrupted - model solved by another algorithm
+
+
+Solved with dual simplex
+Solved in 157 iterations and 0.06 seconds
+Optimal objective  8.112789961e+02
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:45:05
+
+Read MPS format model from file ./instances/eil33-2.mps
+Reading time = 0.02 seconds
+eil33-2: 32 rows, 4516 columns, 44243 nonzeros
+Optimize a model with 4518 rows, 4516 columns and 48729 nonzeros
+Variable types: 0 continuous, 4516 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e+01, 4e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 4496 rows and 4511 columns
+Presolve time: 0.00s
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:45:05
+
+Read MPS format model from file ./instances/eil33-2.mps
+Reading time = 0.02 seconds
+eil33-2: 32 rows, 4516 columns, 44243 nonzeros
+Optimize a model with 2051 rows, 4516 columns and 46262 nonzeros
+Variable types: 0 continuous, 4516 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e+01, 4e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2019 rows and 2867 columns
+Presolve time: 1.97s
+Presolved: 32 rows, 1649 columns, 15144 nonzeros
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Variable types: 0 continuous, 1649 integer (1649 binary)
+Presolved: 32 rows, 1649 columns, 15144 nonzeros
+
+
+Root relaxation: objective 8.119535e+02, 136 iterations, 0.02 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  811.95346    0   24          -  811.95346      -     -    2s
+     0     0  818.14420    0   25          -  818.14420      -     -    2s
+     0     0  818.72758    0   26          -  818.72758      -     -    2s
+     0     0  818.84635    0   27          -  818.84635      -     -    2s
+     0     0  821.33721    0   44          -  821.33721      -     -    2s
+     0     0  821.60850    0   39          -  821.60850      -     -    2s
+     0     0  821.87531    0   37          -  821.87531      -     -    2s
+     0     0  821.89662    0   40          -  821.89662      -     -    2s
+     0     0  822.51270    0   43          -  822.51270      -     -    2s
+     0     0  822.91003    0   45          -  822.91003      -     -    2s
+     0     0  823.09240    0   38          -  823.09240      -     -    2s
+     0     0  823.32366    0   40          -  823.32366      -     -    2s
+     0     0  823.35693    0   51          -  823.35693      -     -    2s
+     0     0  823.38387    0   51          -  823.38387      -     -    2s
+     0     0  824.05325    0   48          -  824.05325      -     -    2s
+     0     0  824.08514    0   51          -  824.08514      -     -    2s
+     0     0  824.14863    0   54          -  824.14863      -     -    2s
+     0     0  824.17731    0   54          -  824.17731      -     -    2s
+     0     0  824.20799    0   53          -  824.20799      -     -    2s
+     0     0  824.21107    0   54          -  824.21107      -     -    2s
+     0     0  824.94112    0   56          -  824.94112      -     -    2s
+     0     0  824.96781    0   53          -  824.96781      -     -    2s
+     0     0  825.90985    0   54          -  825.90985      -     -    2s
+     0     0  826.03796    0   52          -  826.03796      -     -    2s
+     0     0  826.16529    0   59          -  826.16529      -     -    2s
+     0     0  826.18829    0   67          -  826.18829      -     -    2s
+     0     0  826.40661    0   65          -  826.40661      -     -    2s
+     0     0  826.42932    0   57          -  826.42932      -     -    2s
+     0     0  826.51779    0   63          -  826.51779      -     -    2s
+     0     0  826.51779    0   63          -  826.51779      -     -    2s
+     0     2  826.51779    0   63          -  826.51779      -     -    3s
+*  347   146               9     934.0079160  846.00593  9.42%  38.1    4s
+   441   158 infeasible    8       934.00792  848.81755  9.12%  36.3    5s
+H  444   158                     934.0078486  848.81755  9.12%  36.2    5s
+
+Cutting planes:
+  Clique: 67
+  MIR: 17
+  Mod-K: 9
+
+Explored 1623 nodes (43892 simplex iterations) in 6.30 seconds
+Thread count was 8 (of 4 available processors)
+
+Solution count 2: 934.008 934.008 
+No other solutions better than 934.008
+
+Optimal solution found (tolerance 1.00e-12)
+Best objective 9.340078485576e+02, best bound 9.340078485576e+02, gap 0.0000%
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:45:12
+
+Read MPS format model from file ./instances/eil33-2.mps
+Reading time = 0.03 seconds
+eil33-2: 32 rows, 4516 columns, 44243 nonzeros
+Optimize a model with 2495 rows, 4516 columns and 46706 nonzeros
+Variable types: 0 continuous, 4516 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e+01, 4e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+
+Loaded MIP start with objective 934.008
+
+Presolve removed 2463 rows and 4145 columns
+Presolve time: 0.47s
+Presolved: 32 rows, 371 columns, 2787 nonzeros
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Found heuristic solution: objective 934.0078409
+Variable types: 0 continuous, 371 integer (371 binary)
+Presolved: 32 rows, 371 columns, 2787 nonzeros
+
+
+Root relaxation: objective 8.838993e+02, 58 iterations, 0.02 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0     cutoff    0       934.00784  934.00784  0.00%     -    0s
+
+Explored 0 nodes (64 simplex iterations) in 0.48 seconds
+Thread count was 8 (of 4 available processors)
+
+Solution count 1: 934.008 
+No other solutions better than 934.008
+
+Optimal solution found (tolerance 1.00e-12)
+Best objective 9.340078409146e+02, best bound 9.340078409146e+02, gap 0.0000%
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:45:12
+
+Read MPS format model from file ./instances/eil33-2.mps
+Reading time = 0.02 seconds
+eil33-2: 32 rows, 4516 columns, 44243 nonzeros
+Optimize a model with 2051 rows, 4516 columns and 46262 nonzeros
+Variable types: 0 continuous, 4516 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e+01, 4e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+
+Loaded MIP start with objective 934.008
+
+Presolve removed 2019 rows and 2867 columns
+Presolve time: 2.00s
+Presolved: 32 rows, 1649 columns, 15144 nonzeros
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Found heuristic solution: objective 934.0076286
+Variable types: 0 continuous, 1649 integer (1649 binary)
+Presolved: 32 rows, 1649 columns, 15144 nonzeros
+
+
+Root relaxation: objective 8.119535e+02, 136 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  811.95346    0   24  934.00763  811.95346  13.1%     -    2s
+     0     0  818.14420    0   25  934.00763  818.14420  12.4%     -    2s
+     0     0  818.72758    0   26  934.00763  818.72758  12.3%     -    2s
+     0     0  818.84635    0   27  934.00763  818.84635  12.3%     -    2s
+     0     0  821.33721    0   44  934.00763  821.33721  12.1%     -    2s
+H    0     0                     934.0075665  821.33721  12.1%     -    2s
+     0     0  821.60850    0   39  934.00757  821.60850  12.0%     -    2s
+     0     0  821.87531    0   37  934.00757  821.87531  12.0%     -    2s
+     0     0  821.89662    0   40  934.00757  821.89662  12.0%     -    2s
+     0     0  822.51270    0   43  934.00757  822.51270  11.9%     -    2s
+H    0     0                     934.0075373  822.51270  11.9%     -    2s
+     0     0  822.91003    0   45  934.00754  822.91003  11.9%     -    2s
+     0     0  823.09240    0   38  934.00754  823.09240  11.9%     -    2s
+     0     0  823.32366    0   40  934.00754  823.32366  11.9%     -    2s
+     0     0  823.35693    0   51  934.00754  823.35693  11.8%     -    2s
+     0     0  823.38387    0   51  934.00754  823.38387  11.8%     -    2s
+     0     0  824.05325    0   48  934.00754  824.05325  11.8%     -    2s
+     0     0  824.08514    0   51  934.00754  824.08514  11.8%     -    2s
+     0     0  824.14863    0   54  934.00754  824.14863  11.8%     -    2s
+     0     0  824.17731    0   54  934.00754  824.17731  11.8%     -    2s
+     0     0  824.20799    0   53  934.00754  824.20799  11.8%     -    2s
+     0     0  824.21107    0   54  934.00754  824.21107  11.8%     -    2s
+     0     0  824.94112    0   56  934.00754  824.94112  11.7%     -    2s
+     0     0  825.89993    0   53  934.00754  825.89993  11.6%     -    2s
+     0     0  826.86653    0   54  934.00754  826.86653  11.5%     -    2s
+     0     0  826.86653    0   52  934.00754  826.86653  11.5%     -    2s
+     0     0  827.37244    0   59  934.00754  827.37244  11.4%     -    2s
+     0     0  827.37244    0   67  934.00754  827.37244  11.4%     -    2s
+H    0     0                     934.0074540  827.85989  11.4%     -    3s
+     0     0  827.85989    0   65  934.00745  827.85989  11.4%     -    3s
+     0     0  827.85989    0   65  934.00745  827.85989  11.4%     -    3s
+     0     2  827.85989    0   65  934.00745  827.85989  11.4%     -    3s
+   374   111  923.54522    7   33  934.00745  847.79569  9.23%  42.9    5s
+
+Cutting planes:
+  Cover: 1
+  Clique: 69
+  MIR: 16
+  Mod-K: 10
+
+Explored 1592 nodes (48484 simplex iterations) in 6.24 seconds
+Thread count was 8 (of 4 available processors)
+
+Solution count 4: 934.007 934.008 934.008 934.008 
+
+Optimal solution found (tolerance 1.00e-12)
+Best objective 9.340074539899e+02, best bound 9.340074539899e+02, gap 0.0000%
+
+Gurobi 8.1.1 (win64) logging started 11/21/19 23:45:19
+
+Read MPS format model from file ./instances/eil33-2.mps
+Reading time = 0.02 seconds
+eil33-2: 32 rows, 4516 columns, 44243 nonzeros
+Optimize a model with 2495 rows, 4516 columns and 46706 nonzeros
+Variable types: 0 continuous, 4516 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e+01, 4e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+
+Loaded MIP start with objective 934.007
+
+Presolve removed 2463 rows and 4145 columns
+Presolve time: 0.45s
+Presolved: 32 rows, 371 columns, 2787 nonzeros
+
+Warning: Thread count (8) is larger than core count (4)
+         Reduce the value of the Threads parameter to improve performance
+
+Found heuristic solution: objective 934.0074386
+Variable types: 0 continuous, 371 integer (371 binary)
+Presolved: 32 rows, 371 columns, 2787 nonzeros
+
+
+Root relaxation: objective 8.838993e+02, 58 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0     cutoff    0       934.00744  934.00744  0.00%     -    0s
+
+Explored 0 nodes (64 simplex iterations) in 0.47 seconds
+Thread count was 8 (of 4 available processors)
+
+Solution count 1: 934.007 
+
+Optimal solution found (tolerance 1.00e-12)
+Best objective 9.340074386578e+02, best bound 9.340074386304e+02, gap 0.0000%

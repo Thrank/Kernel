@@ -1,0 +1,13 @@
+OBJ:22256.0  -  TIME: 0 s.
+OBJ:20069.0  -  TIME: 0 s.
+OBJ:20033.0  -  TIME: 0 s.
+OBJ:20024.0  -  TIME: 0 s.
+OBJ:20022.0  -  TIME: 0 s.
+OBJ:17803.0  -  TIME: 0 s.
+OBJ:17799.0  -  TIME: 0 s.
+OBJ:17545.0  -  TIME: 0 s.
+OBJ:17028.0  -  TIME: 1 s.
+OBJ:17020.0  -  TIME: 1 s.
+OBJ:17014.0  -  TIME: 1 s.
+OBJ:16962.0  -  TIME: 1 s.
+OBJ:16948.0  -  TIME: 1 s.
