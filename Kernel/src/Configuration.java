@@ -9,6 +9,7 @@ public class Configuration
 	private double bucketSize;
 	private double bucketSizeStart;
 	private double bucketSizeEnd;
+	private int bucketMax;
 	private BucketBuilder bucketBuilder;
 	private KernelBuilder kernelBuilder;
 	private int timeLimitKernel;
@@ -81,6 +82,10 @@ public class Configuration
 	{
 		return timeLimitKernel;
 	}
+	
+	public int getBucketMax() {
+		return bucketMax;
+	}
 
 	public void setBucketBuilder(BucketBuilder bucketBuilder)
 	{
@@ -146,6 +151,11 @@ public class Configuration
 	public void setTimeLimitKernel(int timeLimitKernel)
 	{
 		this.timeLimitKernel = timeLimitKernel;
+	}
+
+	public void setBucketMax(int bucketMax) {
+		this.bucketMax = bucketMax;
+		
 	}
 
 	/*public void setBucketSizeStart(double bucketSizeStart) {

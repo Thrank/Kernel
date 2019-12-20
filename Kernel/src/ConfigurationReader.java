@@ -46,6 +46,12 @@ public class ConfigurationReader
         				case 0:
         					config.setItemSorter(new ItemSorterByValueAndAbsoluteRC());
         					break;
+        				case 1:
+        					config.setItemSorter(new ItemSorterByAbsoluteRCAndValue());
+        					break;
+        				case 2:
+        					config.setItemSorter(new ItemSorterPercentageByValueAndAbsoluteRC());
+        					break;
         				default:
         					System.out.println("Unrecognized item sorter.");
         			}
@@ -58,6 +64,9 @@ public class ConfigurationReader
         			if(splitLine.length == 4)
         				config.setBucketSizeVariable(Double.parseDouble(splitLine[2]), Double.parseDouble(splitLine[3]));
         			break;
+        		case "BUCKETMAX":
+        			config.setBucketMax(Integer.parseInt(splitLine[1]));
+        			break;
         		case "BUCKETBUILDER":
         			switch(Integer.parseInt(splitLine[1]))
         			{
@@ -69,6 +78,15 @@ public class ConfigurationReader
         					break;
         				case 2:
         					config.setBucketBuilder(new BucketBuilderOverlapping());
+        					break;
+        				case 3:
+        					config.setBucketBuilder(new BucketBuilderVariableLimited());
+        					break;
+        				case 4:
+        					config.setBucketBuilder(new BucketBuilderVariableOverlapping());
+        					break;
+        				case 5:
+        					config.setBucketBuilder(new BucketBuilderKernelMixed());
         					break;
         				default:
         					System.out.println("Unrecognized bucket builder.");
@@ -91,6 +109,9 @@ public class ConfigurationReader
         					break;
         				case 1:
         					config.setKernelBuilder(new KernelBuilderPercentage());
+        					break;
+        				case 2:
+        					config.setKernelBuilder(new KernelBuilderPercentageAndRc());
         					break;
         				default:
         					System.out.println("Unrecognized kernel builder.");

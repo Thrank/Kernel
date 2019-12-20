@@ -8,6 +8,9 @@ public class ItemSorterByValueAndAbsoluteRC implements ItemSorter
 	{
 		items.sort(Comparator.comparing(Item::getXr).reversed()
 		          .thenComparing(Item::getRc));
+		//for(Item i : items)
+		//System.out.println(i.getXr());
+		
 	}
 
 }

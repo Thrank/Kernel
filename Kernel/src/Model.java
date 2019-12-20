@@ -42,6 +42,7 @@ public class Model
 			env = new GRBEnv();
 			setParameters();
 			model = new GRBModel(env, mpsFilePath);
+			
 			if(lpRelaxation)
 				model = model.relax();
 		} catch (GRBException e)
@@ -66,7 +67,7 @@ public class Model
 	{
 		try
 		{
-			model.optimize(); //Gurobi al termine di questa operazione risponde con dai sull'ottimizzazione del problema
+			model.optimize(); //Gurobi al termine di questa operazione risponde con dati sull'ottimizzazione del problema
 			if(model.get(IntAttr.SolCount) > 0)
 				hasSolution = true;
 		} catch (GRBException e)
