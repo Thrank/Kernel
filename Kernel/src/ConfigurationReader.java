@@ -8,12 +8,14 @@ import java.util.stream.Collectors;
 
 public class ConfigurationReader
 {
+	//static boolean iterateBucketAgain = false;
+
 	public static Configuration read(String path)
 	{
 		Configuration config = new Configuration();
 		
 		List<String> lines = new ArrayList<>();
-
+		
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path)))
         {
         	lines = br.lines().collect(Collectors.toList());
@@ -52,6 +54,23 @@ public class ConfigurationReader
         				case 2:
         					config.setItemSorter(new ItemSorterPercentageByValueAndAbsoluteRC());
         					break;
+        				case 3:
+        					config.setItemSorter(new ItemSorterByOccurrences());
+        					break;
+        				case 4:
+        					config.setItemSorter(new ItemSorterByBinVar());
+        					break;
+        				case 5:
+        					config.setItemSorter(new ItemSorterByLowerBound());
+        					break;
+        				case 6:
+        					config.setItemSorter(new ItemSorterByValueAndObj());
+        					break;
+        				case 7:
+        					config.setItemSorter(new ItemSorterByRcPerLowerBound());
+        					break;
+        				case 8:
+        					config.setItemSorter(new ItemSorterBydeltaUBLB());
         				default:
         					System.out.println("Unrecognized item sorter.");
         			}
@@ -88,6 +107,16 @@ public class ConfigurationReader
         				case 5:
         					config.setBucketBuilder(new BucketBuilderKernelMixed());
         					break;
+        				case 6:
+        					config.setBucketBuilder(new BucketBuilderVariableOverlappingAlternative());
+        					break;
+        				case 7:
+        					config.setBucketBuilder(new BucketBuilderVariableOverlappingAlternative2());
+        					break;
+        				case 8:
+        					config.setBucketBuilder(new BucketBuilderVariableMixedOverlapping());
+        					//iterateBucketAgain = true;
+        					break;
         				default:
         					System.out.println("Unrecognized bucket builder.");
         			}
@@ -113,16 +142,13 @@ public class ConfigurationReader
         				case 2:
         					config.setKernelBuilder(new KernelBuilderPercentageAndRc());
         					break;
+        				case 3:
+        					config.setKernelBuilder(new KernelBuilderPercentageAndVarType());
+        					break;
         				default:
         					System.out.println("Unrecognized kernel builder.");
         			}
         			break;
-        		/*case "BUCKETSIZESTART":
-        			config.setBucketSizeStart(Double.parseDouble(splitLine[1]));
-        			break;
-        		case "BUCKETSIZEEND":
-        			config.setBucketSizeEnd(Double.parseDouble(splitLine[1]));
-        			break;*/
         		default:
         			System.out.println("Unrecognized parameter name.");			
 			}

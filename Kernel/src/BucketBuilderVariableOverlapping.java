@@ -4,14 +4,11 @@ import java.util.List;
 public class BucketBuilderVariableOverlapping implements BucketBuilder {
 
 	public List<Bucket> build(List<Item> items, Configuration config) {
-		//double countS2 = 1;
 		double count = 1;
 		List<Bucket> buckets = new ArrayList<>();
 		Bucket b = new Bucket();
 		//take the base size dimension
 		int size = (int) Math.floor(items.size()*config.getBucketSize());
-		//int size1 = 0;
-		//int size2 = 0;
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
@@ -19,7 +16,7 @@ public class BucketBuilderVariableOverlapping implements BucketBuilder {
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
-		for(int k=0; k<(items.size()-config.getBucketSize()); k++) {
+		for(int k=0; k<(items.size()); k++) {
 			b.addItem(items.get(k));
 			//open a new bucket
 			if(b.size()==size) {

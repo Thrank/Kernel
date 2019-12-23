@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class KernelBuilderPercentageAndRc implements KernelBuilder {
+public class KernelBuilderPercentageAndVarType implements KernelBuilder {
 
 	@Override
 	public Kernel build(List<Item> items, Configuration config) {
@@ -8,9 +8,9 @@ public class KernelBuilderPercentageAndRc implements KernelBuilder {
 		
 		for(Item it : items)
 		{
-			//This kernel will try to add positive Rc at the beginning to avoid to adding them lately
+			//This kernel will add only binary variable to the kernel set
 			if(it.getXr()> 0 && kernel.size() < Math.round(config.getKernelSize()*items.size())
-					&& it.getRc()>=0)
+					&& it.getVarType()=='B')
 			{
 				kernel.addItem(it);
 			}
