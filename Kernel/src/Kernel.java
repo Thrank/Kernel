@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.ArrayList;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.List;
@@ -48,7 +47,11 @@ public class Kernel
 		return this.items.size();
 	}
 	
+	public void removeItem(SortedMap<String, Item> it) {
+		this.items.keySet().removeAll(it.keySet());
+	}
 	public void removeItem(Item it) {
-		//
+		if(this.contains(it))
+			this.items.remove(it.getName());
 	}
 }

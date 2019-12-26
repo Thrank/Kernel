@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -9,7 +7,6 @@ public class Bucket
 {
 	//private List<Item> items;
 	private SortedMap<String, Item> items;
-	//private HashMap<String, Item> hashItems;
 
 	//Constructor of the hashmap
 	public Bucket()
@@ -44,11 +41,6 @@ public class Bucket
 	public SortedMap<String, Item> getItemMap() {
 		return this.items;
 	}
-	
-	/*public HashMap<Integer, Item> getItems()
-	{
-		return hashItems;
-	}*/
 	
 	public boolean contains(Item it)
 	{

@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import gurobi.GRBCallback;
@@ -17,7 +18,7 @@ public class KernelSearch
 	private String instPath;
 	private String logPath;
 	private Configuration config;
-	private HashMap<String, Item> hashItems;
+	//private HashMap<String, Item> hashItems;
 	private List<Item> items;
 	private List<Constraint> constraints;
 	private ItemSorter sorter;
@@ -76,13 +77,14 @@ public class KernelSearch
 		//If the problem is too big, give to the analysis more time
 		if(items.size()>= 10000) {
 			System.out.println("TEMPI ANALISI KERNEL E BUCKET AUMENTATI!\n");
+			
 			tlimBucket=200;
 			tlimKernel=100;
 		}
 		
 		sorter.sort(items);
 		
-		kernel = kernelBuilder.build(items, config);
+		kernel = kernelBuilder.build(items, constraints, config);
 		buckets = bucketBuilder.build(items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList()), config);
 		solveKernel();
 		iterateBuckets();
@@ -93,11 +95,13 @@ public class KernelSearch
 	private List<Constraint> buildConstraints(Model model) {
 		List<Constraint> constraints = new ArrayList<>();
 		List<String> consNames = model.getConsNames();
+		List<String> varsName = new ArrayList<>();
 		for(String c : consNames) {
 			char sense = model.getSense(c);
 			double rhs = model.getRightHandSide(c);
+			varsName = model.getVincolo(c);
 			
-			Constraint cons = new Constraint(c, sense, rhs);
+			Constraint cons = new Constraint(c, sense, rhs, varsName);
 			constraints.add(cons);
 		}
 		return constraints;
@@ -126,6 +130,9 @@ public class KernelSearch
 			int occ = model.getVarOcc(v); //take occurrences
 			double deltaUBLB = upperBound-lowerBound;
 			//System.out.println("Variabile: "+ v +" "+ lowerBound +" "+ upperBound);
+			//if a variable is fixed, add a new constraint to fix it to one of his bounds.
+			if(lowerBound == upperBound)
+				model.addVarFixedConstraints(v, lowerBound); //no tested!
 			Item it = new Item(v, value, rc, varType, lowerBound, upperBound, obj, occ, RcLB, deltaUBLB);
 			//hashItems.put(v, it);
 			items.add(it);
@@ -190,7 +197,7 @@ public class KernelSearch
 			List<Item> toDisable = new ArrayList<Item>();
 			int counter=0;
 			System.out.println("NUMERO ITEM: "+items.size());
-			//This operation is slow as fuck (fixed!)
+			//This operation is very slow (fixed!)
 			for(Item it : items) {
 				if(counter%100==0)
 					System.out.println("NEL CICLO: "+counter);
@@ -245,37 +252,56 @@ public class KernelSearch
 				return;
 			}
 			System.out.println("\nFINE SOLVEBUCKETS\n");
+			//We should put here another condition because like this is pretty unuseful
+			if(notTheFirstIteraction)
+				kernelControl(b);
+			if(bestSolution.isEmpty()) {
+				//change sorter (i.e.) if no solutions has been found in all bucket
+				
+			}
 		}
 		//After the first iteraction of all buckets, look to throw away some variable inside kernel
-		//if(notTheFirstIteraction)
-			//kernelControl();
+		notTheFirstIteraction = true;
 	}
 	//this method should throw away some elements of the kernel
-	private void kernelControl() {
-		
-		//List<Item> toThrowAway = new ArrayList<>();
-		
+	private void kernelControl(Bucket b) {
+		System.out.println("SONO DENTRO KERNELCONTROL!");
+		//SortedMap<String, Item> toThrowAway = new TreeMap<>();
+		//I have to build the model again? Gurobi really change names?
 		Model model = new Model(instPath, logPath, Math.min(tlimKernel, getRemainingTime()), config, false);
 		model.buildModel();
 		//We can set also the callback here if we need.
+		//not sure if we have to solve it again. We've already solved it with the last buckets, so data should be updated.
 		//model.solve();
-		List<String> varNames = model.getVarNames();
 		List<Item> itemsKernel = new ArrayList<>();
+		System.out.println("NUMERO ITEM: "+ items.size());
 		for(Item it : items) {
 			if(kernel.contains(it)) {
-				for(String v : varNames) {
-					double value = model.getVarValue(v);
-					double obj = model.getObjCoeff(v);
-					Item itKernel = new Item(v, value, obj);
-					itemsKernel.add(itKernel);
-				}
+				String v = it.getName();
+				double value = it.getXr();
+				double obj = it.getObjCoeff();
+				//double value = model.getVarValue(v);
+				//double obj = model.getObjCoeff(v);
+				Item itKernel = new Item(v, value, obj);
+				itemsKernel.add(itKernel);
+				System.out.println("\nNUOVA VARIABILE TROVATA NEL KERNEL!");
 			}
 		}
-		itemsKernel.sort(Comparator.comparing(Item::getXr));
-		int sizeK = (int) 0.005*itemsKernel.size();
-		for(int i=0; i<sizeK; i++) {
-			
+		System.out.println("\nVARIABILI NEL KERNEL: "+ itemsKernel.size()+"\n");
+		//with this sorting we have all the item that we want to remove at the beginning of the list.
+		itemsKernel.sort(Comparator.comparing(Item::getXr).thenComparing(Item::getObjCoeff));
+		
+		//Decide how much variables to throw away.
+		int sizeK = (int) Math.round(0.1*itemsKernel.size());
+		
+		//throw away from kernel and put inside the last bucket
+		for(Item it : itemsKernel.subList(0, sizeK)){
+			//Item it = itemsKernel.get(i);
+			kernel.removeItem(it);
+			b.addItem(it);
+			System.out.println("RIMOSSA VARIABILE DAL KERNEL");
 		}
+		System.out.println("VARIABILI BUTTATE: "+sizeK);
 	}
 
 	private int getRemainingTime()

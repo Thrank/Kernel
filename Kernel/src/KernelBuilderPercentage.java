@@ -3,7 +3,7 @@ import java.util.List;
 public class KernelBuilderPercentage implements KernelBuilder
 {
 	@Override
-	public Kernel build(List<Item> items, Configuration config)
+	public Kernel build(List<Item> items, List<Constraint> constraints, Configuration config)
 	{
 		Kernel kernel = new Kernel();
 		
@@ -13,7 +13,8 @@ public class KernelBuilderPercentage implements KernelBuilder
 			{
 				kernel.addItem(it);
 			}
-		}	
+		}
+		System.out.println("VARIABILI POSTE NEL KERNEL: "+ kernel.size());
 		return kernel;
 	}
 }

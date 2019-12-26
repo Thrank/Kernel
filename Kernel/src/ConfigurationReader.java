@@ -71,6 +71,7 @@ public class ConfigurationReader
         					break;
         				case 8:
         					config.setItemSorter(new ItemSorterBydeltaUBLB());
+        					break;
         				default:
         					System.out.println("Unrecognized item sorter.");
         			}
@@ -144,6 +145,9 @@ public class ConfigurationReader
         					break;
         				case 3:
         					config.setKernelBuilder(new KernelBuilderPercentageAndVarType());
+        					break;
+        				case 4:
+        					config.setKernelBuilder(new KernelBuilderProportionalNM());
         					break;
         				default:
         					System.out.println("Unrecognized kernel builder.");

@@ -1,5 +1,4 @@
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 
 public class ItemSorterByOccurrences implements ItemSorter {
@@ -8,10 +7,10 @@ public class ItemSorterByOccurrences implements ItemSorter {
 	public void sort(List<Item> items) {
 		items.sort(Comparator.comparing(Item::getXr).reversed().
 				thenComparing(Item::getOcc).reversed());
-		HashMap<String, Item> hashItems = new HashMap<>();
+		/*HashMap<String, Item> hashItems = new HashMap<>();
 		for(Item it : items) {
 			hashItems.put(it.getName(), it);
-		}
+		}*/
 		//return hashItems;
 	}
 

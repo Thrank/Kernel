@@ -27,6 +27,8 @@ public class Model
 	private boolean lpRelaxation;
 	private GRBEnv env;
 	private GRBModel model;
+	private GRBConstr constr;
+	private GRBLinExpr linExpr;
 	private boolean hasSolution;
 	private double positiveThreshold = 1e-5;
 	
@@ -409,6 +411,45 @@ public class Model
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	public List<String> getVincolo(String c) {
+		List<String> varsName = new ArrayList<>();
+		int size = 0;
+		GRBVar var;
+		String name;
+		try {
+			constr = model.getConstrByName(c);
+			linExpr = model.getRow(constr);
+			size = linExpr.size();
+			if(linExpr.size()==1) {
+				var = linExpr.getVar(0);
+				name = var.get(StringAttr.VarName);
+				varsName.add(name);
+				return varsName;
+			} else {
+				for(int i=0; i<size; i++) {
+					var = linExpr.getVar(i);
+					name = var.get(StringAttr.VarName);
+					varsName.add(name);
+					return varsName;
+				}
+			}
+		} catch (GRBException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	//If the variable is fixed, add constraint to the model.
+	public void addVarFixedConstraints(String v, double value) {
+		GRBLinExpr constraint = new GRBLinExpr();
+		try {
+			model.addConstr(constraint, GRB.EQUAL, value, v);
+		} catch (GRBException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 }
 
