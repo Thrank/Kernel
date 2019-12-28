@@ -9,12 +9,15 @@ public class Configuration
 	private double bucketSize;
 	private double bucketSizeStart;
 	private double bucketSizeIncremental;
+	private double maxIncrement;
+	private double bucketOver;
 	private int bucketMax;
 	private BucketBuilder bucketBuilder;
 	private KernelBuilder kernelBuilder;
 	private int timeLimitKernel;
 	private int numIterations;
 	private int timeLimitBucket;
+	boolean kernelControlActivated;
 	
 
 	public BucketBuilder getBucketBuilder()
@@ -86,6 +89,12 @@ public class Configuration
 	public int getBucketMax() {
 		return bucketMax;
 	}
+	public double getMaxIncrement() {
+		return maxIncrement;
+	}
+	public double getBucketOver() {
+		return bucketOver;
+	}
 
 	public void setBucketBuilder(BucketBuilder bucketBuilder)
 	{
@@ -156,6 +165,15 @@ public class Configuration
 	public void setBucketMax(int bucketMax) {
 		this.bucketMax = bucketMax;
 		
+	}
+
+	public void setMaxIncrement(double maxIncrement) {
+		this.maxIncrement = maxIncrement;
+		
+	}
+
+	public void setBucketOver(double parseDouble) {
+		this.bucketOver = bucketOver;
 	}
 
 	/*public void setBucketSizeStart(double bucketSizeStart) {

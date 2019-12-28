@@ -87,6 +87,12 @@ public class ConfigurationReader
         		case "BUCKETMAX":
         			config.setBucketMax(Integer.parseInt(splitLine[1]));
         			break;
+        		case "MAXINCREMENT":
+        			config.setMaxIncrement(Double.parseDouble(splitLine[1]));
+        			break;
+        		case "BUCKETOVER":
+        			config.setBucketOver(Double.parseDouble(splitLine[1]));
+        			break;
         		case "BUCKETBUILDER":
         			switch(Integer.parseInt(splitLine[1]))
         			{
@@ -153,6 +159,15 @@ public class ConfigurationReader
         					System.out.println("Unrecognized kernel builder.");
         			}
         			break;
+        		case "KERNELCONTROL":
+        			switch(Integer.parseInt(splitLine[1])) {
+        			case 0:
+        				config.kernelControlActivated = false;
+        				break;
+        			case 1:
+        				config.kernelControlActivated = true;
+        				break;
+        			}
         		default:
         			System.out.println("Unrecognized parameter name.");			
 			}

@@ -5,21 +5,15 @@ public class BucketBuilderVariableOverlappingAlternative2 implements BucketBuild
 
 	private int p = 0;
 	private int startingPoint = 0;
+	private double satMaxValue = 0;
 	
 	@Override
 	public List<Bucket> build(List<Item> items, Configuration config) {
-		double count = 0.15;
 		List<Bucket> buckets = new ArrayList<>();
 		Bucket b = new Bucket();
 		//take the base size dimension for the incremental overlapping
 		int size = (int) Math.floor(items.size()*config.getBucketSizeIncremental());
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size);
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		System.out.println("\nNUOVO BUCKET CON DIMENSIONE: "+size+"\n");
 		//Cycle for buckets
 		for(int k=0; k<(items.size()); k++) {
 			b.addItem(items.get(k));
@@ -28,22 +22,21 @@ public class BucketBuilderVariableOverlappingAlternative2 implements BucketBuild
 				buckets.add(b);
 				b = new Bucket();
 				//Look to increment the buckets
-				if(p<=3) { //make new bucket bigger
-					size = (int) ((int) (items.size()*config.getBucketSizeIncremental()+Math.sqrt(count)*
-							(config.getBucketSizeIncremental()*items.size())));
-					count+=0.15;
+				if(p<=config.getBucketMax()) { //make new bucket bigger
+					size = (int) ((int) items.size()*config.getBucketSizeIncremental()*
+							(1+satMaxValue*Math.sqrt(p/config.getBucketMax())));
 					p++;
 					k=startingPoint;
 				} else { //go ahead to make new bucket in new positions
-					startingPoint=(int) (k-(Math.sqrt(count)*(config.getBucketSizeIncremental()*items.size())));
+					startingPoint=(int) (k-(satMaxValue*Math.sqrt(p/config.getBucketMax())*
+							(config.getBucketSizeIncremental()*items.size())));
 					//restart with the original size of buckets
 					size = (int) Math.floor(items.size()*config.getBucketSizeIncremental());
-					count=0.15;
-					p=0;
+					p=1;
 				}
 				//The maximum value of count will be 0.6 for now.
 				System.out.println("VALORE SATURAZIONE: "+(items.size()*config.getBucketSizeIncremental()+
-						Math.sqrt(0.6)*(items.size()*config.getBucketSizeIncremental())));
+						satMaxValue*Math.sqrt(p/config.getBucketMax())*(items.size()*config.getBucketSizeIncremental())));
 				System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size+"\n");
 
 			}

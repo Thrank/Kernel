@@ -4,7 +4,7 @@ import java.util.List;
 public class BucketBuilderVariableOverlapping implements BucketBuilder {
 
 	public List<Bucket> build(List<Item> items, Configuration config) {
-		double count = 1;
+		double count = 2;
 		List<Bucket> buckets = new ArrayList<>();
 		Bucket b = new Bucket();
 		//take the base size dimension
@@ -22,18 +22,20 @@ public class BucketBuilderVariableOverlapping implements BucketBuilder {
 			if(b.size()==size) {
 				buckets.add(b);
 				b = new Bucket();
-				k=(int)(k-0.8*size);
+				k=(int)(k-config.getBucketOver()*size);
+				size =(int)(items.size()*config.getBucketSizeStart()+
+						(items.size()*config.getBucketSize()-items.size()*config.getBucketSizeStart())/count);
 				//changing size dimension. First: Size>=S1
-				if(config.getBucketSize()>=config.getBucketSizeStart()) {
+				/*if(config.getBucketSize()>=config.getBucketSizeStart()) {
 					size = (int) ((int) (items.size()*config.getBucketSize()-Math.atan(config.getBucketSizeStart()))/
 							(count+10)+items.size()*config.getBucketSizeStart());
-					System.out.println("VALORE SATURAZIONE: "+items.size()*config.getBucketSizeStart());
 				} else { //Second: Size<S1
 					size = (int) ((int) (items.size()*config.getBucketSize()-Math.atan(config.getBucketSizeStart()))/
 							(count+25)+items.size()*config.getBucketSizeStart());
-					System.out.println("VALORE SATURAZIONE: "+items.size()*config.getBucketSizeStart());
-				}
-				count+=5;
+					
+				}*/
+				System.out.println("VALORE SATURAZIONE: "+items.size()*config.getBucketSizeStart());
+				count++;
 				//go back in the list. ATTENTION: look at 0.4. It must be bigger that bucketSize and bucketSizeStar
 				//k=(int) (k-0.95*size*items.size());
 				System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size);

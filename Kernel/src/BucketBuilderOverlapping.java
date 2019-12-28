@@ -28,7 +28,7 @@ public class BucketBuilderOverlapping implements BucketBuilder {
 				System.out.println("");
 				System.out.println("");
 				//The number here set how many position we go back to overlap.
-				k=(int) (k-0.80*config.getBucketSize()*items.size());
+				k=(int) (k-config.getBucketOver()*config.getBucketSize()*items.size());
 			}
 			
 			

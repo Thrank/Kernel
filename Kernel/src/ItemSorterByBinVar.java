@@ -8,11 +8,11 @@ public class ItemSorterByBinVar implements ItemSorter {
 	@Override
 	public void sort(List<Item> items) {
 		items.sort(Comparator.comparing(Item::getVarType).
-				thenComparing(Item::getRc));
-		HashMap<String, Item> hashItems = new HashMap<>();
+				thenComparing(Item::getRc).reversed());
+		/*HashMap<String, Item> hashItems = new HashMap<>();
 		for(Item it : items) {
 			hashItems.put(it.getName(), it);
-		}
+		}*/
 		//return hashItems;
 	}
 

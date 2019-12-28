@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class KernelSearch
 	private GRBCallback callback;
 	private int timeThreshold = 15; //it was initialized at 5 in the original code.
 	private boolean notTheFirstIteraction = false;
+	//private boolean kernelControlActivated;
 	
 	
 	private Instant startTime;
@@ -156,11 +158,17 @@ public class KernelSearch
 		model.solve();
 		
 		System.out.println("\nSONO NEL SOLVEKERNEL!\n");
-		
-		if(model.hasSolution() && (model.getSolution().getObj() < bestSolution.getObj() || bestSolution.isEmpty()))
+		//this is ok only for the first iteration
+		if((model.hasSolution() && (model.getSolution().getObj() < bestSolution.getObj() || bestSolution.isEmpty()))
+				&& !notTheFirstIteraction)
 		{
 			bestSolution = model.getSolution();
 			//this one write the solution in the txt
+			model.exportSolution();
+		}
+		//this will work for other iteraction
+		if(notTheFirstIteraction && (model.getSolution().getObj() < bestSolution.getObj() || bestSolution.isEmpty())) {
+			bestSolution = model.getSolution();
 			model.exportSolution();
 		}
 		
@@ -183,6 +191,13 @@ public class KernelSearch
 			if(i > 0) {
 				notTheFirstIteraction = true;
 			}
+		}
+		//Attention: this debugging function must be removed in the final version of the project
+		System.out.println("TERMINATA PRIMA ITERAZIONE DI BUCKET!\nPREMI ENTER PER CONTINUARE.");
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -253,8 +268,9 @@ public class KernelSearch
 			}
 			System.out.println("\nFINE SOLVEBUCKETS\n");
 			//We should put here another condition because like this is pretty unuseful
-			if(notTheFirstIteraction)
+			if(notTheFirstIteraction && config.kernelControlActivated)
 				kernelControl(b);
+			//no best solution found -> do everything from the start with other parameter.
 			if(bestSolution.isEmpty()) {
 				//change sorter (i.e.) if no solutions has been found in all bucket
 				
@@ -302,6 +318,7 @@ public class KernelSearch
 			System.out.println("RIMOSSA VARIABILE DAL KERNEL");
 		}
 		System.out.println("VARIABILI BUTTATE: "+sizeK);
+		solveKernel();
 	}
 
 	private int getRemainingTime()

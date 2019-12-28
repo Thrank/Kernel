@@ -431,8 +431,8 @@ public class Model
 					var = linExpr.getVar(i);
 					name = var.get(StringAttr.VarName);
 					varsName.add(name);
-					return varsName;
 				}
+				return varsName;
 			}
 		} catch (GRBException e) {
 			e.printStackTrace();
