@@ -5,18 +5,13 @@ public class BucketBuilderVariable implements BucketBuilder
 {
 	@Override
 	public List<Bucket> build(List<Item> items, Configuration config) {
-		//double countS2 = 1;
 		double count = 2;
 		List<Bucket> buckets = new ArrayList<>();
 		Bucket b = new Bucket();
 		//take the base size dimension
 		int size = (int) Math.floor(items.size()*config.getBucketSize());
 		System.out.println("");
-		System.out.println("");
-		System.out.println("");
 		System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size);
-		System.out.println("");
-		System.out.println("");
 		System.out.println("");
 		for(Item it : items) {
 			b.addItem(it);
@@ -26,14 +21,8 @@ public class BucketBuilderVariable implements BucketBuilder
 				b = new Bucket();
 				//changing size dimension. Size fixed to BucketSizeStart
 				size =(int)(items.size()*config.getBucketSizeStart()+
-						(items.size()*config.getBucketSize()-items.size()*config.getBucketSizeStart())/count);
-				/*if(config.getBucketSize()>=config.getBucketSizeStart()) {
-					size = (int) ((int) (items.size()*config.getBucketSize()-Math.atan(config.getBucketSizeStart()))/
-							(count+10)+items.size()*config.getBucketSizeStart());
-				} else {
-					size = (int) ((int) (items.size()*config.getBucketSize()-Math.atan(config.getBucketSizeStart()))/
-							(count+25)+items.size()*config.getBucketSizeStart());
-				}*/
+						(items.size()*config.getBucketSize()-items.size()*
+								config.getBucketSizeStart())/count);
 				System.out.println("VALORE SATURAZIONE: "+items.size()*config.getBucketSizeStart());
 				//This is an old version of BucketBuilderVariable with different function
 				/*size = (int) Math.max(items.size()*(Math.atan(config.getBucketSizeStart()*countS1)),

@@ -18,6 +18,7 @@ public class Configuration
 	private int numIterations;
 	private int timeLimitBucket;
 	boolean kernelControlActivated;
+	boolean resetAll;
 	
 
 	public BucketBuilder getBucketBuilder()
@@ -172,7 +173,7 @@ public class Configuration
 		
 	}
 
-	public void setBucketOver(double parseDouble) {
+	public void setBucketOver(double bucketOver) {
 		this.bucketOver = bucketOver;
 	}
 

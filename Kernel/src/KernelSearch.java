@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
@@ -35,14 +36,14 @@ public class KernelSearch
 	private int numIterations;
 	private GRBCallback callback;
 	private int timeThreshold = 15; //it was initialized at 5 in the original code.
-	private boolean notTheFirstIteraction = false;
-	//private boolean kernelControlActivated;
+	//private boolean notTheFirstIteraction = false;
 	
 	
 	private Instant startTime;
 
 	private int iter;
 	private int tempoAttuale;
+	
 	
 	public KernelSearch(String instPath, String logPath, Configuration config)
 	{
@@ -160,15 +161,10 @@ public class KernelSearch
 		System.out.println("\nSONO NEL SOLVEKERNEL!\n");
 		//this is ok only for the first iteration
 		if((model.hasSolution() && (model.getSolution().getObj() < bestSolution.getObj() || bestSolution.isEmpty()))
-				&& !notTheFirstIteraction)
+				/*&& !notTheFirstIteraction*/)
 		{
 			bestSolution = model.getSolution();
 			//this one write the solution in the txt
-			model.exportSolution();
-		}
-		//this will work for other iteraction
-		if(notTheFirstIteraction && (model.getSolution().getObj() < bestSolution.getObj() || bestSolution.isEmpty())) {
-			bestSolution = model.getSolution();
 			model.exportSolution();
 		}
 		
@@ -188,17 +184,17 @@ public class KernelSearch
 			System.out.println("ITERAZIONE: "+ i);
 			solveBuckets();
 			System.out.println("\nFINITA LA RISOLUZIONE BUCKET\n");
-			if(i > 0) {
+			/*if(i > 0) {
 				notTheFirstIteraction = true;
-			}
+			}*/
 		}
 		//Attention: this debugging function must be removed in the final version of the project
-		System.out.println("TERMINATA PRIMA ITERAZIONE DI BUCKET!\nPREMI ENTER PER CONTINUARE.");
+		/*System.out.println("TERMINATA PRIMA ITERAZIONE DI BUCKET!\nPREMI ENTER PER CONTINUARE.");
 		try {
 			System.in.read();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	private void solveBuckets()
@@ -217,8 +213,6 @@ public class KernelSearch
 				if(counter%100==0)
 					System.out.println("NEL CICLO: "+counter);
 				if(!kernel.contains(it) && !b.contains(it)) {
-					//toDisable.put(i, it);
-					//i++;
 					toDisable.add(it);
 				}
 				//If we want to stop this cycle when it exceeds the time limit.
@@ -267,17 +261,61 @@ public class KernelSearch
 				return;
 			}
 			System.out.println("\nFINE SOLVEBUCKETS\n");
+		}
+		if(!bestSolution.isEmpty()) {
 			//We should put here another condition because like this is pretty unuseful
-			if(notTheFirstIteraction && config.kernelControlActivated)
-				kernelControl(b);
-			//no best solution found -> do everything from the start with other parameter.
-			if(bestSolution.isEmpty()) {
-				//change sorter (i.e.) if no solutions has been found in all bucket
-				
+			if(config.kernelControlActivated)
+				kernelControl(buckets.get(buckets.size()));
+		} else { //no best solution found -> do everything from the start with other parameter.
+			//change sorter (i.e.) if no solutions has been found in all bucket
+			if(config.resetAll) {
+				System.out.println("NESSUNA SOLUZIONE BUONA -> RIORDINO E RICOSTRUISCO");
+				int number;
+				int max = 8;
+				int min = 0;
+				Random rand = new Random();
+				number = rand.nextInt(((max - min) + 1) + min);
+				System.out.println("SORTER DI TIPO: "+number);
+				switch(number) {
+				case 0:
+					sorter = new ItemSorterByValueAndAbsoluteRC();
+					break;
+				case 1:
+					sorter = new ItemSorterByAbsoluteRCAndValue();
+					break;
+				case 2:
+					sorter = new ItemSorterPercentageByValueAndAbsoluteRC();
+					break;
+				case 3:
+					sorter = new ItemSorterByOccurrences();
+					break;
+				case 4:
+					sorter = new ItemSorterByBinVar();
+					break;
+				case 5:
+					sorter = new ItemSorterByLowerBound();
+					break;
+				case 6:
+					sorter = new ItemSorterByValueAndObj();
+					break;
+				case 7:
+					sorter = new ItemSorterByRcPerLowerBound();
+					break;
+				case 8:
+					sorter = new ItemSorterBydeltaUBLB();
+					break;
+				}
+				sorter = new ItemSorterBydeltaUBLB();
+
+				//re-build everything and start again
+				sorter.sort(items);
+				kernel = kernelBuilder.build(items, constraints, config);
+				buckets = bucketBuilder.build(items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList()), config);
+				solveKernel();
+				iterateBuckets();
+				return;
 			}
 		}
-		//After the first iteraction of all buckets, look to throw away some variable inside kernel
-		notTheFirstIteraction = true;
 	}
 	//this method should throw away some elements of the kernel
 	private void kernelControl(Bucket b) {
@@ -318,6 +356,8 @@ public class KernelSearch
 			System.out.println("RIMOSSA VARIABILE DAL KERNEL");
 		}
 		System.out.println("VARIABILI BUTTATE: "+sizeK);
+		//we have to put out from the solution the variables we removed from the kernel set
+		//model.removeVarSolution(itemsKernel.subList(0, sizeK));
 		solveKernel();
 	}
 

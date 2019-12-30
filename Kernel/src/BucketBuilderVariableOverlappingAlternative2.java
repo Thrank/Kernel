@@ -10,6 +10,7 @@ public class BucketBuilderVariableOverlappingAlternative2 implements BucketBuild
 	@Override
 	public List<Bucket> build(List<Item> items, Configuration config) {
 		List<Bucket> buckets = new ArrayList<>();
+		satMaxValue = config.getMaxIncrement();
 		Bucket b = new Bucket();
 		//take the base size dimension for the incremental overlapping
 		int size = (int) Math.floor(items.size()*config.getBucketSizeIncremental());

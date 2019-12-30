@@ -12,8 +12,8 @@ public class BucketBuilderVariableLimited implements BucketBuilder
 		Bucket b = new Bucket();
 		//take the base size dimension in base of the amount of buckets that I want.
 		int size = (items.size()/(numBucket));
-		System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size);
-		System.out.println("NUMERO TOTALE DI ELEMENTI: "+items.size());
+		System.out.println("\nNUOVO BUCKET CON DIMENSIONE: "+size);
+		System.out.println("NUMERO TOTALE DI ELEMENTI: "+items.size()+"\n");
 		for(Item it : items) {
 			b.addItem(it);
 			//open a new bucket

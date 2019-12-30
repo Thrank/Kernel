@@ -168,6 +168,17 @@ public class ConfigurationReader
         				config.kernelControlActivated = true;
         				break;
         			}
+        		case "RESETALL":
+        			switch(Integer.parseInt(splitLine[1])) {
+        			case 0:
+        				config.resetAll = false;
+        				break;
+        			case 1:
+        				config.resetAll = true;
+        				break;
+        			default:
+        				System.out.println("Non riconosciuto");
+        			}
         		default:
         			System.out.println("Unrecognized parameter name.");			
 			}

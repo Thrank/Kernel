@@ -300,6 +300,21 @@ public class Model
 		return sol;
 	}
 	
+	/*public void removeVarSolution(List<Item> items) {
+		Solution sol = new Solution();
+		try {
+			sol.setObj(model.get(DoubleAttr.ObjVal));
+			Map<String, Double> vars = new HashMap<>();
+			for(int i=0; i<items.size();i++) {
+				vars.put(items.get(i).getName(), items.get(i).getXr());
+			}
+			sol.unsetVars(vars);
+		} catch (GRBException e) {
+			e.printStackTrace();
+		}
+	}
+	*/
+	
 	public void addBucketConstraint(List<Item> items)
 	{
 		GRBLinExpr expr = new GRBLinExpr();

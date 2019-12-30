@@ -11,6 +11,7 @@ public class BucketBuilderVariableMixedOverlapping implements BucketBuilder {
 	public List<Bucket> build(List<Item> items, Configuration config) {
 		List<Bucket> buckets = new ArrayList<>();
 		Bucket b = new Bucket();
+		satMaxValue = config.getMaxIncrement();
 		//take the base size dimension for the incremental overlapping
 		int size = (int) Math.floor(items.size()*config.getBucketSizeIncremental());
 		System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size+"\n");
@@ -55,10 +56,11 @@ public class BucketBuilderVariableMixedOverlapping implements BucketBuilder {
 			if(b.size()==size) {
 				buckets.add(b);
 				b = new Bucket();
-				k=(int)(k-0.8*size);
+				k=(int)(k-config.getBucketOver()*size);
 				System.out.println("IL VALORE DI K: "+k);
 				size =(int)(items.size()*config.getBucketSizeStart()+
-						(items.size()*config.getBucketSize()-items.size()*config.getBucketSizeStart())/count);
+						(items.size()*config.getBucketSize()-
+								items.size()*config.getBucketSizeStart())/count);
 				count++;
 				System.out.println("VALORE SATURAZIONE1: "+items.size()*config.getBucketSizeStart());
 				System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size+"\n");

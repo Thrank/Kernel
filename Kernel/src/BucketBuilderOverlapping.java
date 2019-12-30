@@ -10,22 +10,16 @@ public class BucketBuilderOverlapping implements BucketBuilder {
 		
 		int size = (int) Math.floor(items.size()*config.getBucketSize());
 		System.out.println("");
-		System.out.println("");
-		System.out.println("");
 		System.out.println("NUMERO DI ITEMS: "+items.size());
 		System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size);
 		System.out.println("");
-		System.out.println("");
-		System.out.println("");
-		for(int k=0; k<(items.size()-config.getBucketSize()); k++) {
+		for(int k=0; k<(items.size()); k++) {
 			b.addItem(items.get(k));
 			//if the bucket is full, create new bucket
 			if(b.size()==size) {
 				buckets.add(b);
 				b = new Bucket();
 				System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size);
-				System.out.println("");
-				System.out.println("");
 				System.out.println("");
 				//The number here set how many position we go back to overlap.
 				k=(int) (k-config.getBucketOver()*config.getBucketSize()*items.size());

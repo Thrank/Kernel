@@ -33,6 +33,10 @@ public class Solution
 		this.vars = vars;
 		empty = false;
 	}
+	/*public void unsetVars(Map<String, Double> vars) {
+		this.vars = vars;
+		empty = true;
+	}*/
 
 	public void setEmpty(boolean empty)
 	{

@@ -25,9 +25,8 @@ public class BucketBuilderVariableOverlappingAlternative implements BucketBuilde
 				b = new Bucket();
 				//Look to increment the buckets
 				if(p<=config.getBucketMax()) { //make new bucket bigger
-					size = (int) ((int) items.size()*config.getBucketSizeIncremental()*(1+satMaxValue*Math.sqrt(p/config.getBucketMax())));
-					/*size = (int) ((int) (items.size()*config.getBucketSizeIncremental()+satMaxValue*Math.sqrt(count/config.getBucketMax())*
-							(config.getBucketSizeIncremental()*items.size())));*/
+					size = (int) ((int) items.size()*config.getBucketSizeIncremental()*
+							(1+satMaxValue*Math.sqrt(p/config.getBucketMax())));
 					p++;
 					k=startingPoint;
 				} else { //go ahead to make new bucket in new positions
