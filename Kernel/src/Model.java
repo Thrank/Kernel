@@ -456,7 +456,8 @@ public class Model
 	}
 
 	//If the variable is fixed, add constraint to the model.
-	public void addVarFixedConstraints(String v, double value) {
+	//Gurobi does this thing automatically
+	/*public void addVarFixedConstraints(String v, double value) {
 		GRBLinExpr constraint = new GRBLinExpr();
 		try {
 			model.addConstr(constraint, GRB.EQUAL, value, v);
@@ -465,7 +466,7 @@ public class Model
 		}
 		
 		
-	}
+	}*/
 }
 
 	/*public void disableItems(List<Item> items) {
