@@ -24,7 +24,8 @@ public class BucketBuilderVariableOverlapping implements BucketBuilder {
 				System.out.println("VALORE SATURAZIONE: "+items.size()*config.getBucketSizeStart());
 				count++;
 				//go back in the list. ATTENTION: look at 0.4. It must be bigger that bucketSize and bucketSizeStar
-				//k=(int) (k-0.95*size*items.size());
+				//The comment up here is old. It should work now.
+				k=(int) (k-config.getBucketOver()*size*items.size());
 				System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size);
 				System.out.println("");
 			}

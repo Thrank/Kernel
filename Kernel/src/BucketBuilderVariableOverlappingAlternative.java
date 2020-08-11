@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BucketBuilderVariableOverlappingAlternative implements BucketBuilder {
 
-	private int p = 1;
+	private int p = 1; //counter to keep trace of how many bucket I'm incrementing
 	private int startingPoint = 0;
 	private double satMaxValue = 0;
 	

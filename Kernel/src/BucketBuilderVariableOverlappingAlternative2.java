@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BucketBuilderVariableOverlappingAlternative2 implements BucketBuilder {
 
-	private int p = 0;
+	private int p = 1;
 	private int startingPoint = 0;
 	private double satMaxValue = 0;
 	
@@ -28,14 +28,17 @@ public class BucketBuilderVariableOverlappingAlternative2 implements BucketBuild
 							(1+satMaxValue*Math.sqrt(p/config.getBucketMax())));
 					p++;
 					k=startingPoint;
+					if(p == config.getBucketMax()) {
+						startingPoint = k; //I'm at the last bucket, I'll keep trace of the last element
+					}
 				} else { //go ahead to make new bucket in new positions
-					startingPoint=(int) (k-(satMaxValue*Math.sqrt(p/config.getBucketMax())*
-							(config.getBucketSizeIncremental()*items.size())));
+					//startingPoint=(int) (k-(satMaxValue*Math.sqrt(p/config.getBucketMax())* //the inside the sqrt is always 1 xD
+					//		(config.getBucketSizeIncremental()*items.size())));
 					//restart with the original size of buckets
 					size = (int) Math.floor(items.size()*config.getBucketSizeIncremental());
 					p=1;
 				}
-				//The maximum value of count will be 0.6 for now.
+				//The maximum value of count will be 0.6 for now. (OLD comment)
 				System.out.println("VALORE SATURAZIONE: "+(items.size()*config.getBucketSizeIncremental()+
 						satMaxValue*Math.sqrt(p/config.getBucketMax())*(items.size()*config.getBucketSizeIncremental())));
 				System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size+"\n");
