@@ -278,6 +278,7 @@ public class KernelSearch
 				int number;
 				int max = 8;
 				int min = 0;
+				//THIS PART MUST BE FINISHED BECAUSE THE CHOICE IS RANDOM FOR NOW (AND THAT'S NOT SO GOOD).
 				//for now we use a random function, but we should decide better here
 				Random rand = new Random();
 				number = rand.nextInt(((max - min) + 1) + min);
