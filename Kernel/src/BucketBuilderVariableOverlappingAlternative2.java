@@ -6,7 +6,7 @@ public class BucketBuilderVariableOverlappingAlternative2 implements BucketBuild
 	private int p = 1;
 	private int startingPoint = 0;
 	private double satMaxValue = 0;
-	
+	private int seriesPoint = 0;
 	@Override
 	public List<Bucket> build(List<Item> items, Configuration config) {
 		List<Bucket> buckets = new ArrayList<>();
@@ -27,13 +27,20 @@ public class BucketBuilderVariableOverlappingAlternative2 implements BucketBuild
 					size = (int) ((int) items.size()*config.getBucketSizeIncremental()*
 							(1+satMaxValue*Math.sqrt(p/config.getBucketMax())));
 					p++;
-					k=startingPoint;
-					if(p == config.getBucketMax()) {
-						startingPoint = k; //I'm at the last bucket, I'll keep trace of the last element
+					//k=startingPoint;
+					if(p == config.getBucketMax()-1) {
+						seriesPoint = k; //Keep trace of the starting point of the new series.
+						k = startingPoint; 
+					} else if(p == config.getBucketMax()) { //bucketMax reached go for a new serie.
+						k = seriesPoint; //go back to start a new series
+						startingPoint = k; //set the new starting point
+					} else {
+						k=startingPoint;
 					}
 				} else { //go ahead to make new bucket in new positions
 					//startingPoint=(int) (k-(satMaxValue*Math.sqrt(p/config.getBucketMax())* //the inside the sqrt is always 1 xD
 					//		(config.getBucketSizeIncremental()*items.size())));
+					
 					//restart with the original size of buckets
 					size = (int) Math.floor(items.size()*config.getBucketSizeIncremental());
 					p=1;
