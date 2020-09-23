@@ -6,7 +6,7 @@ public class ItemSorterByLowerBound implements ItemSorter {
 	@Override
 	public void sort(List<Item> items) {
 		items.sort(Comparator.comparing(Item::getXr).reversed().
-				thenComparing(Item::getLowerBound).
+				thenComparing(Item::getLowerBound).reversed().
 				thenComparing(Item::getRc));
 		/*HashMap<String, Item> hashItems = new HashMap<>();
 		for(Item it : items) {
