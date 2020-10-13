@@ -7,7 +7,7 @@ public class Configuration
 	private ItemSorter sorter;
 	private double kernelSize;
 	private double bucketSize;
-	private double bucketSizeStart;
+	private double bucketSizeFinal;
 	private double bucketSizeIncremental;
 	private double maxIncrement;
 	private double bucketOver;
@@ -31,7 +31,7 @@ public class Configuration
 		return bucketSize;
 	}
 	public double getBucketSizeStart() {
-		return bucketSizeStart;
+		return bucketSizeFinal;
 	}
 	public double getBucketSizeIncremental() {
 		return bucketSizeIncremental;
@@ -109,7 +109,7 @@ public class Configuration
 	// For when we need variable buckets
 	public void setBucketSizeVariable(double bucketSizeStart, double bucketSizeEnd)
 	{
-		this.bucketSizeStart = bucketSizeStart;
+		this.bucketSizeFinal = bucketSizeStart;
 		this.bucketSizeIncremental = bucketSizeEnd;
 	}
 
@@ -180,7 +180,6 @@ public class Configuration
 	/*public void setBucketSizeStart(double bucketSizeStart) {
 		this.bucketSizeStart = bucketSizeStart;
 	}
-
 	public void setBucketSizeEnd(double bucketSizeEnd) {
 		this.bucketSizeEnd = bucketSizeEnd;
 	}*/

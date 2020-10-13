@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BucketBuilderVariableMixedOverlapping implements BucketBuilder {
 
-	private int p = 0;
+	private int p = 1;
 	private int startingPoint = 0;
 	private double satMaxValue = 0;
 
@@ -24,8 +24,10 @@ public class BucketBuilderVariableMixedOverlapping implements BucketBuilder {
 				b = new Bucket();
 				//Look to increment the buckets
 				if(p<=config.getBucketMax()) { //make new bucket bigger
-					size = (int) ((items.size()*config.getBucketSizeIncremental()+Math.sqrt(p/config.getBucketMax())*
-							(config.getBucketSizeIncremental()*items.size())));
+					size = (int) (items.size()*config.getBucketSizeIncremental()*
+							(1+Math.sqrt(p/config.getBucketMax())));
+							//+Math.sqrt(p/config.getBucketMax())*
+							//(config.getBucketSizeIncremental()*items.size()));*/
 					p++;
 					k=startingPoint;
 				} else { //go ahead to make new bucket in new positions
@@ -36,7 +38,7 @@ public class BucketBuilderVariableMixedOverlapping implements BucketBuilder {
 				}
 				//The maximum value of count will be 0.6 for now.
 				System.out.println("VALORE SATURAZIONE: "+(items.size()*config.getBucketSizeIncremental()+
-						satMaxValue*Math.sqrt(p/config.getBucketMax())*(items.size()*config.getBucketSizeIncremental())));
+						1*Math.sqrt(p/config.getBucketMax())*(items.size()*config.getBucketSizeIncremental())));
 				System.out.println("NUOVO BUCKET CON DIMENSIONE: "+size+"\n");
 
 			}
@@ -46,17 +48,17 @@ public class BucketBuilderVariableMixedOverlapping implements BucketBuilder {
 		}
 		//new size dimension for second iteration of buckets
 		size = (int) Math.floor(items.size()*config.getBucketSize());
-		int count = 0;
+		int count = 2; //with 0 solve probPortfolio
 		System.out.println("NUOVO BUCKET PARTE 2 CON DIMENSIONE: "+size+"\n");
 		System.out.println("IL VALORE DI items size: "+items.size());
-		b = new Bucket();
+		//b = new Bucket();
 		for(int k=0; k<items.size(); k++) {
 			b.addItem(items.get(k));
 			//open a new bucket
 			if(b.size()==size) {
 				buckets.add(b);
 				b = new Bucket();
-				k=(int)(k-config.getBucketOver()*size);
+				k=(int)(k-Math.floor(config.getBucketOver()*size));
 				System.out.println("IL VALORE DI K: "+k);
 				size =(int)(items.size()*config.getBucketSizeStart()+
 						(items.size()*config.getBucketSize()-

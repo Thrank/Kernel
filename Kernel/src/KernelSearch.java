@@ -291,7 +291,8 @@ public class KernelSearch
 					sorter = new ItemSorterByAbsoluteRCAndValue();
 					break;
 				case 2:
-					sorter = new ItemSorterPercentageByValueAndAbsoluteRC();
+					//sorter = new ItemSorterPercentageByValueAndAbsoluteRC();
+					sorter = new ItemSorterByAbsoluteRCAndValue();
 					break;
 				case 3:
 					sorter = new ItemSorterByOccurrences();
