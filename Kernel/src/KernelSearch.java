@@ -28,7 +28,7 @@ public class KernelSearch
 	private KernelBuilder kernelBuilder;
 	private int tlim;
 	private Solution bestSolution;
-	private Solution oldSolution;
+	private double oldSolution = 0;
 	private List<Bucket> buckets;
 	//private HashMap<Integer, Item> hashBuckets;
 	private Kernel kernel;
@@ -38,7 +38,7 @@ public class KernelSearch
 	private GRBCallback callback;
 	private int timeThreshold = 15; //it was initialized at 5 in the original code.
 	//private boolean notTheFirstIteraction = false;
-	
+	private int configTest = 0;
 	
 	private Instant startTime;
 
@@ -83,8 +83,8 @@ public class KernelSearch
 			System.out.println("TEMPI ANALISI KERNEL E BUCKET AUMENTATI!\n");
 			//set new time to analyze buckets and kernel, because the problem is too big and we need more time.
 			//we sacrifice worst variables in our analysis.
-			tlimBucket=200;
-			tlimKernel=100;
+			tlimBucket=200; //standard=200 seconds
+			tlimKernel=100; //standard=100 seconds
 		}
 		
 		sorter.sort(items);
@@ -154,7 +154,6 @@ public class KernelSearch
 		model.buildModel();
 		if(!bestSolution.isEmpty()) {
 			model.readSolution(bestSolution);
-			oldSolution=bestSolution;
 		}
 		
 		List<Item> toDisable = items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList());
@@ -178,8 +177,10 @@ public class KernelSearch
 	private void iterateBuckets()
 	{
 		System.out.println("\nSONO NELL'ITERATEBUCKET!\n");
+		oldSolution = bestSolution.getObj();
 		for (int i = 0; i < numIterations; i++)
 		{
+			oldSolution = bestSolution.getObj();
 			System.out.println("\n\nSONO NEL FOR DELL'ITERATEBUCKET!\n");
 			tempoAttuale = getRemainingTime(); //it's casted to int in the method
 			System.out.println("TEMPO RIMANENTE: "+tempoAttuale+" TEMPO MASSIMO: "+timeThreshold);
@@ -192,6 +193,7 @@ public class KernelSearch
 				notTheFirstIteraction = true;
 			}*/
 		}
+		
 		//Attention: this debugging function must be removed in the final version of the project
 		/*System.out.println("TERMINATA PRIMA ITERAZIONE DI BUCKET!\nPREMI ENTER PER CONTINUARE.");
 		try {
@@ -266,115 +268,76 @@ public class KernelSearch
 			}
 			System.out.println("\nFINE SOLVEBUCKETS\n");
 		}
-		if(!bestSolution.isEmpty() && bestSolution==oldSolution) {
+		if(!bestSolution.isEmpty() /*|| bestSolution.getObj()==oldSolution*/) {
 			//We should put here another condition because like this is pretty unuseful
-			System.out.println("SOLUZIONE VECCHIA UGUALE ALLA NUOVA -> KERNEL CONTROL");
-			if(config.kernelControlActivated)
-				kernelControl(buckets.get(buckets.size()-1)); //we have to give to kernelControl the last buckets (size of array -1).
+			if(bestSolution.getObj() == oldSolution) {
+				if(config.kernelControlActivated) {
+					System.out.println("SOLUZIONE VECCHIA UGUALE ALLA NUOVA -> KERNEL CONTROL");
+					kernelControl(buckets.get(buckets.size()-1)); //we have to give to kernelControl the last buckets (size of array -1).
+				}
+			}
 		} else { //no best solution found -> do everything from the start with other parameter.
 			//change sorter (i.e.) if no solutions has been found in all bucket
 			if(config.resetAll) {
 				System.out.println("NESSUNA SOLUZIONE TROVATA -> RIORDINO E RICOSTRUISCO");
-				int number;
-				int max = 8;
-				int min = 0;
-				//THIS PART MUST BE FINISHED BECAUSE THE CHOICE IS RANDOM FOR NOW (AND THAT'S NOT SO GOOD).
-				//for now we use a random function, but we should decide better here
-				Random rand = new Random();
-				number = rand.nextInt(((max - min) + 1) + min);
-				System.out.println("SORTER DI TIPO: "+number);
-				switch(number) {
-				case 0:
-					sorter = new ItemSorterByValueAndAbsoluteRC();
-					break;
-				case 1:
-					sorter = new ItemSorterByAbsoluteRCAndValue();
-					break;
-				case 2:
-					//sorter = new ItemSorterPercentageByValueAndAbsoluteRC();
-					sorter = new ItemSorterByAbsoluteRCAndValue();
-					break;
-				case 3:
-					sorter = new ItemSorterByOccurrences();
-					break;
-				case 4:
-					sorter = new ItemSorterByBinVar();
-					break;
-				case 5:
-					sorter = new ItemSorterByLowerBound();
-					break;
-				case 6:
-					sorter = new ItemSorterByValueAndObj();
-					break;
-				case 7:
+				configTest++;
+				if(configTest == 1) {
 					sorter = new ItemSorterByRcPerLowerBound();
-					break;
-				case 8:
-					sorter = new ItemSorterBydeltaUBLB();
-					break;
-				}
-				
-				//resetting kernelBuilder
-				max=3;
-				number = rand.nextInt(((max-min) +1) + min);
-				System.out.println("KERNELBUILDER DI TIPO: "+number);
-				switch(number) {
-				case 0:
-					kernelBuilder = new KernelBuilderPercentage();
-					break;
-				case 1:
-					kernelBuilder = new KernelBuilderPercentageAndRc();
-					break;
-				case 2:
-					kernelBuilder = new KernelBuilderPercentageAndVarType();
-					break;
-				case 3:
-					kernelBuilder = new KernelBuilderProportionalNM();
-					break;
-				}
-				
-				//resetting bucketBuilder
-				max=7;
-				number = rand.nextInt(((max - min) + 1) + min);
-				System.out.println("BUCKETBUILDER DI TIPO: "+number);
-				switch(number) {
-				case 0:
-					bucketBuilder = new DefaultBucketBuilder();
-					break;
-				case 1:
-					bucketBuilder = new BucketBuilderVariable();
-					break;
-				case 2:
-					bucketBuilder = new BucketBuilderOverlapping();
-					break;
-				case 3:
-					bucketBuilder = new BucketBuilderVariableLimited();
-					break;
-				case 4:
+					//kernelBuilder remains the same
+					config.setBucketSize(0.4);
+					config.setBucketSizeVariable(0.2, 0.3);
+					config.setBucketOver(0.2);
 					bucketBuilder = new BucketBuilderVariableOverlapping();
-					break;
-				case 5:
-					bucketBuilder = new BucketBuilderVariableOverlappingAlternative();
-					break;
-				case 6:
-					bucketBuilder = new BucketBuilderVariableOverlappingAlternative2();
-					break;
-				case 7:
-					bucketBuilder = new BucketBuilderVariableMixedOverlapping();
-					break;
+					
+					//re-build everything and start again
+					sorter.sort(items);
+					kernel = kernelBuilder.build(items, constraints, config);
+					buckets = bucketBuilder.build(items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList()), config);
+					//if you are here, one iteration is gone
+					numIterations -= 1;
+					System.out.println("CONFIGURAZIONE 2\nSORTER: 7\nKERNELBUILDER: 0\nBUCKETBUILDER: 4\nBUCKETSIZE: "+config.getBucketSize()+" "+config.getBucketSizeStart()+" "+config.getBucketSizeIncremental()+"\n");
+					//restart working on it
+					solveKernel();
+					iterateBuckets();
+					//out of this method
+					return;
 				}
-
-				//re-build everything and start again
-				sorter.sort(items);
-				kernel = kernelBuilder.build(items, constraints, config);
-				buckets = bucketBuilder.build(items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList()), config);
-				//if you are here, one iteration is gone
-				numIterations -= 1;
-				//restart working on it
-				solveKernel();
-				iterateBuckets();
-				//out of this method
-				return;
+				if(configTest == 2) {
+					sorter = new ItemSorterByValueAndAbsoluteRC();
+					kernelBuilder = new KernelBuilderPercentage();
+					config.setBucketSize(0.2);
+					config.setBucketSizeVariable(0.4, 0.5);
+					bucketBuilder = new BucketBuilderVariableOverlappingAlternative();
+					sorter.sort(items);
+					kernel = kernelBuilder.build(items,  constraints, config);
+					buckets = bucketBuilder.build(items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList()), config);
+					System.out.println("TEMPI DI LAVORO VINCOLATI A KERNEL:20, BUCKET:30");
+					tlimKernel = 20;
+					tlimBucket = 30;
+					numIterations -= 1;
+					System.out.println("CONFIGURAZIONE 3\nSORTER: 0\nKERNELBUILDER: 1\nBUCKETBUILDER: 6\nBUCKETSIZE: "+config.getBucketSize()+" "+config.getBucketSizeStart()+" "+config.getBucketSizeIncremental()+"\n");
+					solveKernel();
+					iterateBuckets();
+					return;
+				}
+				if(configTest == 3) {
+					sorter = new ItemSorterByRcPerLowerBound();
+					kernelBuilder = new KernelBuilderPositive();
+					config.setBucketSize(0.2);
+					config.setBucketSizeVariable(0.4, 0.5);
+					bucketBuilder = new BucketBuilderVariableOverlappingAlternative();
+					sorter.sort(items);
+					kernel = kernelBuilder.build(items,  constraints, config);
+					buckets = bucketBuilder.build(items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList()), config);
+					System.out.println("TEMPI DI LAVORO VINCOLATI A KERNEL:20, BUCKET:60");
+					tlimKernel = 20;
+					tlimBucket = 120;
+					numIterations -= 1;
+					System.out.println("CONFIGURAZIONE 4\nSORTER: 7\nKERNELBUILDER: 0\nBUCKETBUILDER: 7\nBUCKETSIZE: "+config.getBucketSize()+" "+config.getBucketSizeStart()+" "+config.getBucketSizeIncremental()+"\n");
+					solveKernel();
+					iterateBuckets();
+					return;
+				}
 			}
 		}
 	}
@@ -407,7 +370,7 @@ public class KernelSearch
 		itemsKernel.sort(Comparator.comparing(Item::getXr).thenComparing(Item::getObjCoeff));
 		
 		//Decide how much variables to throw away.
-		int sizeK = (int) Math.round(0.1*itemsKernel.size());
+		int sizeK = (int) Math.round(0.05*itemsKernel.size()); //in the test there was a 10% of variables, but it's too much
 		
 		//throw away from kernel and put inside the last bucket
 		for(Item it : itemsKernel.subList(0, sizeK)){

@@ -167,6 +167,8 @@ public class ConfigurationReader
         			case 1:
         				config.kernelControlActivated = true;
         				break;
+        			default:
+        				System.out.println("Unrecognized parameter for kernelControl.");
         			}
         		case "RESETALL":
         			switch(Integer.parseInt(splitLine[1])) {
@@ -177,10 +179,10 @@ public class ConfigurationReader
         				config.resetAll = true;
         				break;
         			default:
-        				System.out.println("Non riconosciuto");
+        				System.out.println("Unrecognized parameter for resetAll.");
         			}
-        		default:
-        			System.out.println("Unrecognized parameter name.");			
+        		//default:
+        		//	System.out.println("Unrecognized parameter name.");
 			}
         }
         return config;

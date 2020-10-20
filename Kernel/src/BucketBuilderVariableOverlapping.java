@@ -4,7 +4,7 @@ import java.util.List;
 public class BucketBuilderVariableOverlapping implements BucketBuilder {
 
 	public List<Bucket> build(List<Item> items, Configuration config) {
-		double count = 2; //with 0 o 0.25 solve probPortfolio, 2 standard
+		double count = 2; //with 0 or 0.25 solve probPortfolio, 2 standard
 		List<Bucket> buckets = new ArrayList<>();
 		Bucket b = new Bucket();
 		//take the base size dimension
