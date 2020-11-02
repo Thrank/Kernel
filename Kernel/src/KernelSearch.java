@@ -325,7 +325,7 @@ public class KernelSearch
 					kernelBuilder = new KernelBuilderPositive();
 					config.setBucketSize(0.2);
 					config.setBucketSizeVariable(0.4, 0.5);
-					bucketBuilder = new BucketBuilderVariableOverlappingAlternative();
+					bucketBuilder = new BucketBuilderVariableOverlappingAlternative2();
 					sorter.sort(items);
 					kernel = kernelBuilder.build(items,  constraints, config);
 					buckets = bucketBuilder.build(items.stream().filter(it -> !kernel.contains(it)).collect(Collectors.toList()), config);
